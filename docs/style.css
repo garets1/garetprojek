@@ -1,0 +1,285 @@
+/* Color Palette */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling for the body, including background image and gradient */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('6243378.jpg'), linear-gradient(to right, #19001B, #2F012C);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(25, 0, 27, 0.85);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Navigation menu styles */
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-left: 50px;
+}
+
+nav ul li {
+    margin-right: 30px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 5px 10px; /* Add some padding for better click area */
+}
+
+nav ul li a:hover {
+    color: #FBEAD5; /* Light Cream */
+}
+
+nav ul li a:active {
+    background-color: #9C7882; /* Cool Beige */
+    color: #ffffff; /* Keep text color white on click */
+}
+
+.container {
+    margin-top: 100px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(25, 0, 27, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Title styles for forms */
+h1 {
+    font-size: 30px;
+    color: #FBEAD5; /* Light Cream */
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 26px;
+    color: #9C7882; /* Cool Beige */
+}
+
+/* Styles for the form and messages */
+p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.textbox {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.textbox input,
+.textbox select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #9C7882;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.textbox input::placeholder {
+    color: #b3b3b3;
+}
+
+.textbox input:focus,
+.textbox select:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+    border-color: #FBEAD5;
+}
+
+.textbox select {
+    appearance: none;
+    color: #ffffff;
+}
+
+.textbox select option {
+    background-color: #19001B;
+    color: #ffffff;
+}
+
+/* Modify button color for registration */
+.btn {
+    background-color: #4CAF50; /* Green */
+    color: #ffffff; /* White text */
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049; /* Darker green */
+    transform: translateY(-2px);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    background-color: rgba(25, 0, 27, 0.85);
+    font-size: 14px;
+}
+
+footer p {
+    color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        margin-left: 20px;
+    }
+
+    nav ul li {
+        margin-right: 15px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+}
+
+/* Additional CSS for success message */
+.message {
+    background-color: #54345B; /* Muted Purple */
+    color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 30px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.message .btn {
+    background-color: #ffffff;
+    color: #54345B; /* Muted Purple */
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.message .btn:hover {
+    background-color: #54345B;
+    color: #ffffff;
+}
+
+/* Style for notification button */
+.notif-button {
+    position: fixed;
+    left: 20px;
+    top: 120px;
+    background-color: #FBEAD5;
+    color: #19001B;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.notif-button:hover {
+    background-color: #9C7882;
+}
+
+/* Styles for the registration form title and success message */
+.container h2 {
+    color: #FBEAD5; /* Light Cream for form title */
+}
+
+.message {
+    background-color: #9C7882; /* Cool Beige for success message background */
+}
+
+/* Additional CSS for success message */
+.message {
+    background-color: #4CAF50; /* Cool Beige for success message background */
+    color: #ffffff;
+    padding: 60px 20px; /* Increased padding for more space */
+    border-radius: 10px;
+    text-align: center;
+    font-size: 28px; /* Increased font size */
+    margin-top: 30px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    margin-top: 120px; /* Increased top margin for more space */
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(25, 0, 27, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Profile image styles */
+.profile img {
+    width: 120px; /* Size of the image */
+    height: 120px; /* Size of the image */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the circle without distortion */
+    border: 2px solid #fff; /* Border color */
+    margin-right: 15px; /* Space between image and text */
+    overflow: hidden; /* Ensure anything overflowing the circle is hidden */
+}

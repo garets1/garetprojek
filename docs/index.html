@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Workshop</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tambahan untuk menyembunyikan konten secara default */
+        .section {
+            display: none;
+        }
+
+        /* Gaya untuk tombol notifikasi di sebelah kiri */
+        .notif-button {
+            position: fixed;
+            left: 20px;
+            top: 120px;
+            background-color: #9C7882;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            z-index: 10; /* Pastikan tombol di atas konten lain */
+        }
+
+        .notif-button:hover {
+            background-color: #9C7882;
+        }
+
+        /* Gaya untuk judul form dengan garis kotak */
+        .form-title {
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #e0f7fa; /* Warna judul */
+        }
+
+        /* Gaya untuk bagian profil pembuat */
+        .profile-container {
+            display: flex;
+            justify-content: space-between; /* Memastikan profil berada di kiri dan kanan */
+            margin-top: 20px;
+            text-align: left;
+            width: 100%; /* Memastikan lebar penuh */
+            padding: 0 20px; /* Memberikan padding horizontal */
+        }
+
+        .profile {
+            display: flex; /* Menggunakan flexbox untuk tata letak */
+            align-items: center; /* Vertically center align */
+            width: 45%; /* Lebar untuk setiap profil */
+            padding: 10px;
+            border: 1px solid #ddd; /* Border untuk memberikan efek pemisah */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1); /* Background transparan */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Bayangan */
+        }
+
+        .profile img {
+            width: 120px; /* Ukuran gambar */
+            height: 120px; /* Ukuran gambar */
+            border-radius: 50%; /* Membuat gambar menjadi bulat */
+            object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+            border: 2px solid #fff; /* Warna border gambar */
+            margin-right: 15px; /* Spasi antara gambar dan teks */
+        }
+
+        .profile h3 {
+            margin: 0; /* Menghilangkan margin */
+            font-size: 20px;
+            color: #fff; /* Warna nama */
+        }
+
+        .profile p {
+            margin: 5px 0; /* Margin vertikal */
+            font-size: 14px;
+            color: #ddd; /* Warna teks deskripsi */
+        }
+
+        /* Gaya untuk menampilkan @ */
+        .at-symbols {
+            display: flex; /* Menggunakan flexbox untuk menyusun simbol @ */
+            justify-content: space-between; /* Memisahkan simbol kiri dan kanan */
+            margin-top: 20px;
+            font-size: 18px;
+            color: #FBEAD5; /* Warna untuk simbol @ */
+            text-align: center; /* Mengatur teks di tengah */
+            padding: 0 20px; /* Memberikan padding horizontal */
+        }
+
+        /* Tambahan jarak antara simbol @ */
+        .at-symbols span {
+            width: 45%; /* Memberikan lebar agar jarak lebih konsisten */
+            text-align: center; /* Mengatur teks di tengah */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('pendaftaran')">Pendaftaran</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+                <li><a href="#" onclick="showSection('profil')">Profil Pembuat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Tombol Notifikasi -->
+    <button class="notif-button" onclick="showWelcomeMessage()">Informasi</button>
+
+    <!-- Audio Background -->
+    <audio id="background-audio" src="Audio WhatsApp 2024-10-27 pukul 06.47.09_13fbd423.mp3" loop autoplay></audio>
+
+    <!-- Section Pendaftaran -->
+    <div id="pendaftaran" class="section" style="display: block;">
+        <h2 class="form-title">Form Pendaftaran Workshop</h2>
+        <form id="formPendaftaran" onsubmit="return handleSubmit(event)">
+            <div class="textbox">
+                <input type="text" placeholder="Nama Lengkap" name="fullname" required>
+            </div>
+            <div class="textbox">
+                <input type="text" placeholder="NIM" name="nim" required>
+            </div>
+
+
+            <div class="textbox">
+                <select name="jenis_kelamin" required>
+                    <option value="" disabled selected>Jenis Kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="textbox">
+                <select name="jenis_workshop" required>
+                    <option value="" disabled selected>Jenis Workshop</option>
+                    <option value="Workshop A">Web Development</option>
+                    <option value="Workshop B">Graphic Design</option>
+                    <option value="Workshop C">Data Science</option>
+                </select>
+            </div>
+            <div class="textbox">
+                <input type="date" name="tanggal_lahir" required>
+            </div>
+            <button type="submit" class="btn">Daftar</button>
+        </form>
+
+        <div id="message" class="message" style="display: none;">
+            <h1>Selamat, Anda Telah Mendaftar Workshop DI Website Kami, Terimakash!</h1>
+        </div>
+        <div class="at-symbols" id="atSymbols" style="display: none;">
+            <span class="at-handle">@Evan2024</span>
+            <span class="at-handle">@Margaret2024</span>
+        </div>
+        
+    </div>
+
+    <!-- Section About -->
+    <div id="about" class="section">
+        <b><h2>Tentang Workshop</h2>
+            <p>Website ini dirancang sebagai bagian dari tugas proyek pemrograman website yang bertujuan untuk membantu peserta dalam melakukan pendaftaran workshop secara online. Di era digital saat ini, kami menyadari bahwa efisiensi dalam proses pendaftaran sangat penting, terutama untuk acara yang melibatkan banyak peserta. Oleh karena itu, kami ingin menciptakan pengalaman yang mudah dan efisien bagi setiap peserta yang ingin bergabung.</p>
+            <p>Dengan antarmuka yang ramah pengguna, peserta dapat dengan cepat mengisi informasi yang diperlukan dan mendaftar untuk workshop yang diinginkan. Proses pendaftaran ini tidak hanya memudahkan pengumpulan data, tetapi juga mengurangi waktu yang diperlukan untuk mendaftar secara manual. Dengan mengintegrasikan teknologi, kami berharap dapat mempercepat proses dan mengurangi kemungkinan kesalahan yang sering terjadi dalam pendaftaran tradisional.</p>
+            <p>Terima kasih banyak atas perhatian dan partisipasi Anda semua, kami berharap dapat bertemu dan berkolaborasi lebih lanjut dalam acara-acara mendatang!</p>
+            </b>
+    </div>
+
+    <!-- Section Profil Pembuat -->
+    <div id="profil" class="section">
+        <h2>Profil Pembuat Website</h2>
+        <div class="profile-container">
+            <div class="profile">
+                <img src="Gambar WhatsApp 2024-10-27 pukul 06.01.09_97894195.jpg" alt="Evan Atha A">
+                <div>
+                    <b><h3>Evan Atha Abqary</h3>
+                        <p>Mahasiswa Informatika IT PLN</p>
+                        <p>NIM : 202331163</p>
+                        <p>Role : Membuat Tampilan Website Pendaftaran, about, Design layout,background, dan lagu otomatis (Buka Lewat Firefox)
+                        </p>
+                    </b>
+                </div>
+            </div>
+            <div class="profile">
+                <img src="Gambar WhatsApp 2024-10-27 pukul 05.57.15_420d0f9e.jpg" alt="Margaret Adelia">
+                <div>
+                    <b><h3>Margaret Adelia</h3>
+                        <p>Mahasiswa Informatika IT PLN</p>
+                        <p>NIM : 202331164</p>
+                        <p>Role : Membuat Tampilan about dan Profil Pembuat Serta Design warna dan juga menambahkan tampilan selesai mendaftar </p>
+                    </b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
